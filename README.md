@@ -82,15 +82,6 @@ make clean
 
 ## Project Breakdown
 ```
-- **src/**: Contains the source code files for GPIO configuration and LED control logic.
-  - **main.c**: Main application file that controls the LED animations.
-  - **gpio.c**: GPIO initialization and control functions.
-  - **led_animation.c**: Functions for managing LED patterns and animations.
-
-- **include/**: Header files for peripheral access and definitions.
-  - **gpio.h**: GPIO-related definitions and function prototypes.
-  - **led_animation.h**: Declarations for LED control functions.
-  - **stm32f1xx.h**: Core definitions and peripheral register structures.
 
 - **startup/**: Custom startup file defining system initialization routines and memory setup.
   - **startup_stm32f103.s**: Assembly file for initial system setup and interrupt vector table configuration.
