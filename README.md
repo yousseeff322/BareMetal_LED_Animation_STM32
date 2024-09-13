@@ -53,7 +53,7 @@ To build the project, navigate to the project directory and run:
 
 ```bash
 make all
-### Flashing the Firmware
+```
 
 To flash the firmware to the STM32F103 board, follow these steps:
 
