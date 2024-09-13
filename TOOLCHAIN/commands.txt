@@ -1,0 +1,38 @@
+ 
+1st command : used to connect with gdb server 
+target remote localhost:3333
+
+2nd command : (monitor use with using gdb only )
+monitor reset init 
+
+3rd command : (flash code)
+monitor flash write_image erase final.elf 
+
+4th command :  (reset then halt )
+monitor reset halt
+
+5th command : 
+monitor resume
+
+6th command : 
+monitor halt
+
+7th command : 
+monitor reset 
+
+8th command : (number of word to display )  
+mdw address count 
+
+9th command : (drop)
+quit   or ctrl+c
+
+10th command : (add break point)
+
+bp address 2 hw
+
+
+11th command : (show break points list not response if no break point found)
+bp
+
+12th command : (remove break point )
+rbp all

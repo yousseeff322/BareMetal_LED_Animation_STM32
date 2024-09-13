@@ -1,0 +1,169 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00020000         xr
+SRAM             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD DIO_program.o
+LOAD STM32_F103C8T6Startup.o
+LOAD SYSTICK_program.o
+LOAD RCC_program.o
+
+.text           0x08000000      0xbc0
+ *(.isr_vector)
+ .isr_vector    0x08000000       0xec STM32_F103C8T6Startup.o
+                0x08000000                Vectors
+ *(.text)
+ .text          0x080000ec       0xcc main.o
+                0x080000ec                main
+ .text          0x080001b8      0x570 DIO_program.o
+                0x080001b8                MGPIO_VidSetPinDirection
+                0x0800035c                MGPIO_VidSetPinValue
+                0x08000450                MGPIO_u8GetPinValue
+                0x080004c8                MGPIO_VidSetPortDirection
+                0x08000594                MGPIO_VidSetPortValue
+                0x08000670                MGPIO_u16GetPortValue
+ .text          0x08000728       0x90 STM32_F103C8T6Startup.o
+                0x08000728                Reset_Handler
+                0x080007b0                EXTI2_IRQHandler
+                0x080007b0                DebugMon_Handler
+                0x080007b0                TIM1_CC_IRQHandler
+                0x080007b0                HardFault_Handler
+                0x080007b0                PVD_IRQHandler
+                0x080007b0                PendSV_Handler
+                0x080007b0                NMI_Handler
+                0x080007b0                EXTI3_IRQHandler
+                0x080007b0                EXTI0_IRQHandler
+                0x080007b0                I2C2_EV_IRQHandler
+                0x080007b0                UsageFault_Handler
+                0x080007b0                ADC1_2_IRQHandler
+                0x080007b0                SPI1_IRQHandler
+                0x080007b0                TAMPER_IRQHandler
+                0x080007b0                DMA1_Channel4_IRQHandler
+                0x080007b0                USART3_IRQHandler
+                0x080007b0                RTC_IRQHandler
+                0x080007b0                DMA1_Channel7_IRQHandler
+                0x080007b0                RTC_Alarm_IRQHandler
+                0x080007b0                CAN1_RX1_IRQHandler
+                0x080007b0                TIM4_IRQHandler
+                0x080007b0                I2C1_EV_IRQHandler
+                0x080007b0                DMA1_Channel6_IRQHandler
+                0x080007b0                TIM3_IRQHandler
+                0x080007b0                RCC_IRQHandler
+                0x080007b0                TIM1_TRG_COM_IRQHandler
+                0x080007b0                DMA1_Channel1_IRQHandler
+                0x080007b0                Default_Handler
+                0x080007b0                EXTI15_10_IRQHandler
+                0x080007b0                EXTI9_5_IRQHandler
+                0x080007b0                SPI2_IRQHandler
+                0x080007b0                MemManage_Handler
+                0x080007b0                SVC_Handler
+                0x080007b0                DMA1_Channel5_IRQHandler
+                0x080007b0                EXTI4_IRQHandler
+                0x080007b0                USB_LP_CAN1_RX0_IRQHandler
+                0x080007b0                USB_HP_CAN1_TX_IRQHandler
+                0x080007b0                DMA1_Channel3_IRQHandler
+                0x080007b0                TIM1_UP_IRQHandler
+                0x080007b0                WWDG_IRQHandler
+                0x080007b0                TIM2_IRQHandler
+                0x080007b0                TIM1_BRK_IRQHandler
+                0x080007b0                EXTI1_IRQHandler
+                0x080007b0                USART2_IRQHandler
+                0x080007b0                I2C2_ER_IRQHandler
+                0x080007b0                DMA1_Channel2_IRQHandler
+                0x080007b0                CAN1_SCE_IRQHandler
+                0x080007b0                FLASH_IRQHandler
+                0x080007b0                BusFault_Handler
+                0x080007b0                USART1_IRQHandler
+                0x080007b0                I2C1_ER_IRQHandler
+                0x080007b0                USBWakeUp_IRQHandler
+ .text          0x080007b8      0x228 SYSTICK_program.o
+                0x080007b8                MSTK_voidInit
+                0x080007d0                MSTK_voidSetBusyWait
+                0x08000844                MSTK_voidSetIntervalSingle
+                0x08000890                MSTK_voidSetIntervalPeriodic
+                0x080008dc                MSTK_voidStopInterval
+                0x08000910                MSTK_u32GetElapsedTime
+                0x08000934                MSTK_u32GetRemainingTime
+                0x08000950                SysTick_Handler
+                0x080009ac                MSTK_VidINTStatus
+ .text          0x080009e0      0x1e0 RCC_program.o
+                0x080009e0                MRCC_VidInit
+                0x08000a48                MRCC_VidEnablePeripheralClock
+                0x08000abc                MRCC_VidDisablePeripheralClock
+                0x08000b38                MRCC_voidSetADCPrescaler
+ *(.rodata)
+                0x08000bc0                        . = ALIGN (0x4)
+                0x08000bc0                        _etext = .
+
+.glue_7         0x08000bc0        0x0
+ .glue_7        0x08000bc0        0x0 linker stubs
+
+.glue_7t        0x08000bc0        0x0
+ .glue_7t       0x08000bc0        0x0 linker stubs
+
+.vfp11_veneer   0x08000bc0        0x0
+ .vfp11_veneer  0x08000bc0        0x0 linker stubs
+
+.v4_bx          0x08000bc0        0x0
+ .v4_bx         0x08000bc0        0x0 linker stubs
+
+.iplt           0x08000bc0        0x0
+ .iplt          0x08000bc0        0x0 main.o
+
+.rel.dyn        0x08000bc0        0x0
+ .rel.iplt      0x08000bc0        0x0 main.o
+
+.data           0x20000000        0x0 load address 0x08000bc0
+                0x20000000                        _sdata = .
+ *(.data)
+ .data          0x20000000        0x0 main.o
+ .data          0x20000000        0x0 DIO_program.o
+ .data          0x20000000        0x0 STM32_F103C8T6Startup.o
+ .data          0x20000000        0x0 SYSTICK_program.o
+ .data          0x20000000        0x0 RCC_program.o
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x08000bc0
+ .igot.plt      0x20000000        0x0 main.o
+
+.bss            0x20000000        0x8 load address 0x08000bc0
+                0x20000000                        _sbss = .
+ *(.bss)
+ .bss           0x20000000        0x0 main.o
+ .bss           0x20000000        0x0 DIO_program.o
+ .bss           0x20000000        0x0 STM32_F103C8T6Startup.o
+ .bss           0x20000000        0x5 SYSTICK_program.o
+ .bss           0x20000005        0x0 RCC_program.o
+                0x20000008                        . = ALIGN (0x4)
+ *fill*         0x20000005        0x3 
+                0x20000008                        _ebss = .
+OUTPUT(final.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x45
+ .comment       0x00000000       0x45 main.o
+                                 0x46 (size before relaxing)
+ .comment       0x00000045       0x46 DIO_program.o
+ .comment       0x00000045       0x46 STM32_F103C8T6Startup.o
+ .comment       0x00000045       0x46 SYSTICK_program.o
+ .comment       0x00000045       0x46 RCC_program.o
+
+.ARM.attributes
+                0x00000000       0x2d
+ .ARM.attributes
+                0x00000000       0x2d main.o
+ .ARM.attributes
+                0x0000002d       0x2d DIO_program.o
+ .ARM.attributes
+                0x0000005a       0x2d STM32_F103C8T6Startup.o
+ .ARM.attributes
+                0x00000087       0x2d SYSTICK_program.o
+ .ARM.attributes
+                0x000000b4       0x2d RCC_program.o
