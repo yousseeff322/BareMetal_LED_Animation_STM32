@@ -81,7 +81,7 @@ To remove all compiled object files and binaries, use the following command:
 make clean
 
 ## Project Breakdown
-
+```
 - **src/**: Contains the source code files for GPIO configuration and LED control logic.
   - **main.c**: Main application file that controls the LED animations.
   - **gpio.c**: GPIO initialization and control functions.
