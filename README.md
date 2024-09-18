@@ -111,5 +111,6 @@ make clean
    - Automates flashing the firmware to the microcontroller using OpenOCD and cleaning build artifacts.
 
 
+[![LinkedIn POST](https://img.shields.io/badge/-Youssef%20Hamed-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)]([https://linkedin.com/in/youssef-hamed-](https://www.linkedin.com/feed/update/urn:li:activity:7240313318282825728/))
 
 
