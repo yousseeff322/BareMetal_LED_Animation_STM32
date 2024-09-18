@@ -110,11 +110,6 @@ make clean
    - Manages the entire build process by compiling the source code, linking with the custom linker script, and generating the final binary.
    - Automates flashing the firmware to the microcontroller using OpenOCD and cleaning build artifacts.
 
-## Future Improvements
-
-- Enhance LED animations to include more complex patterns and effects.
-- Integrate additional peripherals such as timers, ADC, or communication protocols (e.g., UART, I2C).
-- Implement interrupt-driven LED control for more responsive and dynamic animations.
 
 
 
